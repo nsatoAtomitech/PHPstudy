@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=UTF-8');
 session_start(); 
 
 if (!isset($_SESSION["age"])) { 
-    header("Location: http://localhost/PHPstudy/uranai_ask.php"); 
+    header("Location: http://localhost/PHPstudy/uranai/uranai_ask.php"); 
     exit;
 } 
 

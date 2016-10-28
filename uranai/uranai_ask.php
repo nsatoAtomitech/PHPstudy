@@ -15,7 +15,7 @@ if (isset($_POST["uranai"])) {
 	if (!count($error_message)) {
 		session_start();
 		$_SESSION["age"] = $age;
-		header("Location: http://localhost/PHPstudy/uranai_result.php");
+		header("Location: http://localhost/PHPstudy/uranai/uranai_result.php");
 		exit;
 	}
 } else {
