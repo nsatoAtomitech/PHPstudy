@@ -1,9 +1,12 @@
 <?php
 
-$file_name = "C:\\Users\\n.sato\\workspace\\sample.txt";
-$schejule_date = "$year . $month . $day ";
-$fp = fopen($file_name,"w");
-fwrite($fp,".$schejule_date.|.$title.|.$body<br>");
-fclose($fp);
+$str = "phpは面白みに欠ける";
+if(strpos($str,"白") !== false){
+	echo "文字列は含まれています。<br>";
+	echo strpos($str,"白");
+}else{
+	echo "文字列は含まれていません。";
+}
+
 
 ?>
