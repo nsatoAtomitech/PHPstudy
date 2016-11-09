@@ -45,13 +45,13 @@ if (isset ( $_POST ["regist"] )) {
 	
 	//ファイルへ登録処理
 	if (isset ( $error_message )) {
-		//$body = str_replace(array("\r\n", "\r", "\n"), "<br>", $body);
-		$schejule_date = sprintf ("%04d%02d%02d", $year, $month, $day );
-		$line ="\n". $schejule_date . "|" . $title . "|" . $body;
-		$file_name = "C:\\Users\\n.sato\\workspace\\samplefile.txt";
-		$fp = fopen ( $file_name, "a" );
-		fwrite ( $fp, $line );
-		fclose ( $fp );
+		$body = str_replace(array("\r\n", "\r", "\n"), "<br>", $body);
+		$filename = "C:\\Users\\n.sato\\workspace\\sample.txt";  
+    $schedule_date = sprintf("%04d%02d%02d", $year, $month, $day);  
+    $line = $schedule_date."|".$title."|".$body."\n";  
+    $fp = fopen($filename, "a");  
+    fwrite($fp, $line);  
+    fclose($fp);  
 		// スケジュールリストを表示
 		header("Location: http://localhost/phpstudy/schedule/schejule_list.php");
 		exit;
@@ -70,6 +70,7 @@ if (isset ( $error_message )) {
 	}
 }
 ?>
+
 <html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
@@ -99,7 +100,7 @@ border-bottom: 3px double
   #333333; border-left: 3px double #CCCCCC; color: #333333; 
 background-color: #EDECEC;} 
   #error-message {font-weight: bold; color: #DD5757; 
-background-color: transparent;} 
+ba　ckground-color: transparent;} 
   #error-message li {list-style: circle; line-height: 1.5;} 
 </style> 
 </head> 
@@ -109,13 +110,14 @@ background-color: transparent;}
 <?php 
 // エラーメッセージを出力する    
 if (isset($error_message)) {    
+	$body = str_replace(array("\r\n", "\r", "\n"), "<br>", $body);
     print("<div id=\"error-message\"><ul>"); 
     foreach ($error_message as $message) {    
         print("<li>".$message."</li>");   
     }    
     print("</ul></div>"); 
 }   
-?> 
+?>
 <form action="schejule.php" method="post"> 
   <input type="text" name="year" id="schedule-year" value="<?php print(htmlspecialchars($_POST["year"], ENT_QUOTES)); ?>"/> 
   <label for="schedule-year" id="label-year">年</label> 
@@ -129,7 +131,7 @@ if (isset($error_message)) {
     <dt><label for="schedule-body" id="labe-body">内容</label></dt> 
     <dd><textarea name="body" id="schedule-body"><?php print(htmlspecialchars($_POST["body"], ENT_QUOTES)); ?></textarea></dd> 
   </dl> 
-  <input type="submit" name="regist" id="regist" value="登録する" /> 
+  <input type="submit" name="regist" id="regist" value="登録する" onclick="this.disabled = true;"/> 
 </form> 
 
 </body> 
